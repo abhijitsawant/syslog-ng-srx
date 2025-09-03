@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  syslogng:
+    build: .
+    container_name: syslogng
+    restart: always
+    network_mode: "host"   # Required for UDP/514
+    volumes:
+      - ./syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf:ro
+      - /var/log/flowdb/collector-b:/var/log/flowdb/collector-b
